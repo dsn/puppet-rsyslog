@@ -139,6 +139,23 @@ class { 'rsyslog':
 }
 ```
 
+####Client forwarding to multiple hosts
+
+```puppet
+class { 'rsyslog':
+  forwarding_rules => {
+    'host01' => {
+      'protocol' => 'tcp',
+      'rule'     => '*.*'
+    },
+    'host02' => {
+      'protocol' => 'udp',
+      'rule'     => 'kern.*'
+    }
+  }
+}
+```
+
 ###Hiera Samples
 
 ####TCP Server on a Custom Port
@@ -148,7 +165,7 @@ classes:
   - rsyslog
 
 rsyslog::enable_tcp_server: true
-rsyslog::tcp_server_port: 5140
+rsyslog::tcp_server_port:   5140
 ```
 
 ####Client forwarding to multiple hosts
