@@ -89,7 +89,7 @@ Always print --MARK-- messages do not base on volume (only used when $enable_imm
 
 Remote syslog Forwarding Rules
 
-See reference(#reference) for samples
+See [reference](#reference) for samples
 
 Data Type: hash
 
