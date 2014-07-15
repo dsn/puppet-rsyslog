@@ -53,33 +53,54 @@ class { 'rsyslog': }
 
 Listen for syslog requests using the TCP Protocol
 
+Default: ```false```
+Type: ```bool```
+
 ####`enable_udp_server`
 
 Listen for syslog requests using the UDP Protocol
+
+Default: ```false```
+Type: ```bool```
 
 ####`udp_server_port`
 
 Port number to listen to requests on for the UDP Protocol
 
+Default: ```514```
+Type: ```int```
+
 ####`tcp_server_port`
 
 Port number to listen to requests on for the TCP Protocol
+
+Default: ```514```
+
+Type: ```int```
 
 ####`separate_hosts`
 
 Separate hosts into individual directories (only used with TCP / UDP server)
 
+Default: ```false```
+
+Type: ```bool```
+
 ####`enable_immark`
 
 Enable --MARK-- message support
 
-Default: false
+Default: ```false```
+
+Type: ```bool```
 
 ####`immark_interval`
 
 How frequent to write --MARK-- messages in seconds (only used when $enable_immark == true)
 
-Default: 600
+Default: ```600```
+
+Type: ```int```
 
 ####`always_mark`
 
@@ -91,7 +112,7 @@ Remote syslog Forwarding Rules
 
 See [reference](#reference) for samples
 
-Data Type: hash
+Type: ```hash```
 
 ####`package_name`
 
