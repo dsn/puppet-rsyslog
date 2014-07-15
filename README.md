@@ -49,39 +49,39 @@ class { 'rsyslog': }
 
 **Parameters within `rsyslog`:**
 
-####`$enable_tcp_server`
+####`enable_tcp_server`
 
 Listen for syslog requests using the TCP Protocol
 
-####`$enable_udp_server`
+####`enable_udp_server`
 
 Listen for syslog requests using the UDP Protocol
 
-####`$udp_server_port`
+####`udp_server_port`
 
 Port number to listen to requests on for the UDP Protocol
 
-####`$tcp_server_port`
+####`tcp_server_port`
 
 Port number to listen to requests on for the TCP Protocol
 
-####`$separate_hosts`
+####`separate_hosts`
 
 Separate hosts into individual directories (only used with TCP / UDP server)
 
-####`$enable_immark`
+####`enable_immark`
 
 Enable --MARK-- message support
 
 Default: false
 
-####`$immark_interval`
+####`immark_interval`
 
 How frequent to write --MARK-- messages in seconds (only used when $enable_immark == true)
 
 Default: 600
 
-####`$always_mark`
+####`always_mark`
 
 Always print --MARK-- messages do not base on volume (only used when $enable_immark == true)
 
