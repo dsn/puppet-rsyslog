@@ -23,7 +23,7 @@ Puppet module to manage rsyslog.
 
 ##Setup
 
-###What puppet affects
+###What rsyslog affects
 
 * package/service/configuration files for rsyslog
 
@@ -33,7 +33,7 @@ This module requires the Puppet Labs stdlib module which you can install with
 
 ```puppet module install puppetlabs-stdlib```
 
-###Beginning with puppet
+###Beginning with rsyslog
 
 Clone the repo and use the PMT to install the module or clone directly into your $modulepath
 
