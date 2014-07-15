@@ -3,7 +3,7 @@ class rsyslog::config (
   $enable_udp_server = $rsyslog::params::enable_udp_server,
   $udp_server_port   = $rsyslog::params::udp_serve_port,
   $tcp_server_port   = $rsyslog::params::tcp_server_port,
-  $seperate_hosts    = $rsyslog::params::seperate_hosts,
+  $separate_hosts    = $rsyslog::params::separate_hosts,
   $enable_immark     = $rsyslog::params::enable_immark,
   $immark_interval   = $rsyslog::params::immark_interval,
   $forwarding_rules  = {},

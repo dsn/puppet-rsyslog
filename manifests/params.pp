@@ -25,17 +25,15 @@ class rsyslog::params {
   $tcp_listen_address    = '0.0.0.0'
   $udp_listen_address    = '0.0.0.0'
 
-  $seperate_logs_by_host = false
+  $separate_hosts        = false
   $host_logs_dir         = '/var/log/hosts/%HOSTNAME%'
-  $enable_ondisk_queue   = false
 
   # Host Based Features
-
-  $enable_mark           = false
+  $enable_immark         = false
+  $immark_interva        = 600
   $always_mark           = false
-  $mark_interval         = 600
 
-  $forward_rules         = { }
+  $forwarding_rules      = { }
 
   $package_ensure        = present
   $service_ensure        = running
