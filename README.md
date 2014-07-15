@@ -65,27 +65,27 @@ Port number to listen to requests on for the UDP Protocol
 
 Port number to listen to requests on for the TCP Protocol
 
-###`$separate_hosts`
+####`$separate_hosts`
 
 Separate hosts into individual directories (only used with TCP / UDP server)
 
-###`$enable_immark`
+####`$enable_immark`
 
 Enable --MARK-- message support
 
 Default: false
 
-###`$immark_interval`
+####`$immark_interval`
 
 How frequent to write --MARK-- messages in seconds (only used when $enable_immark == true)
 
 Default: 600
 
-###`$always_mark`
+####`$always_mark`
 
 Always print --MARK-- messages do not base on volume (only used when $enable_immark == true)
 
-###`forwarding_rules`
+####`forwarding_rules`
 
 Remote syslog Forwarding Rules
 
@@ -93,27 +93,27 @@ See reference(#reference) for samples
 
 Data Type: hash
 
-###`package_name`
+####`package_name`
 
 Name of the package to manage for override (you shouldn't need to modify this)
 
-###`package_ensure`
+####`package_ensure`
 
 Puppet package_ensure for packages for override (you shouldn't need to modify this)
 
 Default: latest
 
-###`service_name`
+####`service_name`
 
 Name of rsyslog service for override (you shouldn't need to modify this)
 
-###`service_ensure`
+####`service_ensure`
 
 Puppet service_ensure for services for override (you shouldn't need to modify this)
 
 Default: running
 
-###`service_enable`
+####`service_enable`
 
 Start service at boot for override (you shouldn't need to modify this)
 
@@ -123,7 +123,7 @@ Default: true
 
 Below are various sample uses for the module.
 
-###TCP Syslog Server
+####TCP Syslog Server
 
 ```puppet
 class { 'rsyslog':
@@ -131,7 +131,7 @@ class { 'rsyslog':
 }
 ```
 
-###UDP Syslog Server
+####UDP Syslog Server
 
 ```puppet
 class { 'rsyslog':
@@ -139,9 +139,9 @@ class { 'rsyslog':
 }
 ```
 
-####Hiera Samples
+###Hiera Samples
 
-###TCP Server on a Custom Port
+####TCP Server on a Custom Port
 ```yaml
 ---
 classes:
@@ -151,7 +151,7 @@ rsyslog::enable_tcp_server: true
 rsyslog::tcp_server_port: 5140
 ```
 
-###Client forwarding to multiple hosts
+####Client forwarding to multiple hosts
 
 ```yaml
 ---
