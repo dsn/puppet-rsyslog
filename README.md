@@ -70,7 +70,8 @@ class { 'rsyslog':
 ```puppet
 class { 'rsyslog':
   enable_udp_server => true  
-}```
+}
+```
 
 ####Hiera Samples
 
