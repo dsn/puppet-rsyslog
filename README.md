@@ -111,9 +111,7 @@ Always print --MARK-- messages do not base on volume (only used when $enable_imm
 
 ####`forwarding_rules`
 
-Remote syslog Forwarding Rules
-
-See [reference](#reference) for samples
+Remote syslog Forwarding Rules. See [reference](#reference) for samples
 
 Type: ```hash```
 
