@@ -142,7 +142,7 @@ class { 'rsyslog':
 ###Hiera Samples
 
 ####TCP Server on a Custom Port
-```yaml
+```yml
 ---
 classes:
   - rsyslog
@@ -153,7 +153,7 @@ rsyslog::tcp_server_port: 5140
 
 ####Client forwarding to multiple hosts
 
-```yaml
+```yml
 ---
 classes:
   - rsyslog
