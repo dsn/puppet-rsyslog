@@ -1,0 +1,4 @@
+--color
+--format documentation
+--deprecation-out /tmp/deprication.log
+--backtrace

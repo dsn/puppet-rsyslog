@@ -1,0 +1,47 @@
+###
+##  This file is Managed by Puppet
+## DO NOT MODIFY THIS FILE DIRECTLY
+###
+##  Date  : July 10, 2014
+##  Desc  : rsyslog v5 configuration file
+###
+
+#### MODULES ####
+
+# provides support for local system logging
+$ModLoad imuxsock
+
+# provides kernel logging support
+$ModLoad imklog
+
+<% if @enable_mark -%>
+# provides --MARK-- message capability
+$ModLoad immark
+
+# always print mark messages
+$ActionWriteAllMarkMessages on
+
+# mark messages appear every 10 Minutes
+$MarkMessagePeriod <%= @mark_interval %>
+<% end -%>
+<% if @listen_udp -%>
+# Provides UDP syslog reception
+$ModLoad imudp
+$UDPServerRun <%= @listen_upd_port %>
+<% end -%>
+<% if @listen_tcp -%>
+# Provides TCP syslog reception
+$ModLoad imtcp
+$InputTCPServerRun <%= @listen_tcp_port %>
+<% end -%>
+
+#### GLOBAL DIRECTIVES ####
+
+# Use default timestamp format
+$ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat
+
+# Controls last message repeated 'X' times
+$RepeatedMsgReduction off
+
+# Include all config files in /etc/rsyslog.d/
+$IncludeConfig /etc/rsyslog.d/*.conf

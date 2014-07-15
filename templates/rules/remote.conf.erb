@@ -1,0 +1,22 @@
+###
+##  This file is Managed by Puppet
+## DO NOT MODIFY THIS FILE DIRECTLY
+###
+##  Date  : July 9, 2014
+##  Desc  : rsyslog v5 remote forward rules
+###
+<% @forwarding_rules.each_pair do |host,rule| -%>
+# start forwarding rule <%= host %>
+$ActionQueueType                LinkedList      # use asynchronous processing
+$ActionQueueFileName            fwd<%= host %>  # set file name, also enables disk mode
+$ActionResumeRetryCount         -1              # infinite retries on insert failure
+$ActionQueueSaveOnShutdown      on              # save in-memory data if rsyslog shuts down
+<% if rule['protocol'] == 'udp' -%>
+<%= rule['rule'] %>     @<%= host %>
+<% elsif rule['protocol'] == 'tcp' -%>
+<%= rule['rule'] %>     @@<%= host %>
+<% else -%>
+<%= rule['rule'] %>     @@<%= host %>
+<% end -%>
+# end forwarding rule
+<% end -%>
