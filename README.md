@@ -49,9 +49,75 @@ class { 'rsyslog': }
 
 **Parameters within `rsyslog`:**
 
-####`sample_param`
+####`$enable_tcp_server`
 
-Sample Description.
+Listen for syslog requests using the TCP Protocol
+
+####`$enable_udp_server`
+
+Listen for syslog requests using the UDP Protocol
+
+####`$udp_server_port`
+
+Port number to listen to requests on for the UDP Protocol
+
+####`$tcp_server_port`
+
+Port number to listen to requests on for the TCP Protocol
+
+###`$separate_hosts`
+
+Separate hosts into individual directories (only used with TCP / UDP server)
+
+###`$enable_immark`
+
+Enable --MARK-- message support
+
+Default: false
+
+###`$immark_interval`
+
+How frequent to write --MARK-- messages in seconds (only used when $enable_immark == true)
+
+Default: 600
+
+###`$always_mark`
+
+Always print --MARK-- messages do not base on volume (only used when $enable_immark == true)
+
+###`forwarding_rules`
+
+Remote syslog Forwarding Rules
+
+See reference(#reference) for samples
+
+Data Type: hash
+
+###`package_name`
+
+Name of the package to manage for override (you shouldn't need to modify this)
+
+###`package_ensure`
+
+Puppet package_ensure for packages for override (you shouldn't need to modify this)
+
+Default: latest
+
+###`service_name`
+
+Name of rsyslog service for override (you shouldn't need to modify this)
+
+###`service_ensure`
+
+Puppet service_ensure for services for override (you shouldn't need to modify this)
+
+Default: running
+
+###`service_enable`
+
+Start service at boot for override (you shouldn't need to modify this)
+
+Default: true
 
 ##Reference
 
@@ -93,14 +159,13 @@ classes:
   - rsyslog
   
 rsyslog::forwarding_rules:
-  'host01': {
-    protocol => 'tcp',
-	rule     => '*.*'
-  },
-  'host02': {
-    protocol => 'upd',
-	rule     => 'kern.*'
-  }
+rsyslog::forward_rules:
+  'host01':
+    'rule':     '*.*'
+    'protocol': 'tcp'
+  'host02':
+    'rule':     'kern.*'
+    'protocol': 'udp'
 ```
 ##Limitations
 
@@ -115,7 +180,9 @@ Platforms:
 
 ##Development
 
-Rake tasks have been created to assist in testing your module during development. To run the unit tests you might have to install some ruby gems.
+Rake tasks have been created to assist in testing your module during development. 
+
+To run the unit tests you might have to install some ruby gems.
 
 ```bundle install```
 
