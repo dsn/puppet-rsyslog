@@ -54,6 +54,7 @@ class { 'rsyslog': }
 Listen for syslog requests using the TCP Protocol
 
 Default: ```false```
+
 Type: ```bool```
 
 ####`enable_udp_server`
@@ -61,6 +62,7 @@ Type: ```bool```
 Listen for syslog requests using the UDP Protocol
 
 Default: ```false```
+
 Type: ```bool```
 
 ####`udp_server_port`
@@ -68,6 +70,7 @@ Type: ```bool```
 Port number to listen to requests on for the UDP Protocol
 
 Default: ```514```
+
 Type: ```int```
 
 ####`tcp_server_port`
@@ -122,7 +125,7 @@ Name of the package to manage for override (you shouldn't need to modify this)
 
 Puppet package_ensure for packages for override (you shouldn't need to modify this)
 
-Default: latest
+Default: ```latest```
 
 ####`service_name`
 
@@ -132,13 +135,13 @@ Name of rsyslog service for override (you shouldn't need to modify this)
 
 Puppet service_ensure for services for override (you shouldn't need to modify this)
 
-Default: running
+Default: ```running```
 
 ####`service_enable`
 
 Start service at boot for override (you shouldn't need to modify this)
 
-Default: true
+Default: ```true```
 
 ##Reference
 
