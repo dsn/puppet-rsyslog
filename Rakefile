@@ -325,4 +325,4 @@ desc 'Bump Module Version'
 task :bump => [ :version_bump, :generate_metadata ]
 
 desc 'Validate Module'
-task :test => [ :check_layout, :check_syntax, :lint, :check_templates, :check_plugins, :spec ]
+task :test => [ :spec_clean, :check_layout, :check_syntax, :lint, :check_templates, :check_plugins, :spec_prep, :spec ]
