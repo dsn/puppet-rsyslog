@@ -39,8 +39,8 @@ class rsyslog::params {
 
   # Module Internals
   # DO NOT EDIT UNLESS YOU KNOW WHAT YOU ARE DOING
-  $config_file  = '/tmp/rsyslog.conf'
-  $include_dir  = '/tmp/rsyslog.d'
+  $config_file  = '/etc/rsyslog.conf'
+  $include_dir  = '/etc/rsyslog.d'
 
   $package_name = 'rsyslog'
   $service_name = 'rsyslog'

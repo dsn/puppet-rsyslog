@@ -10,8 +10,8 @@ RSpec.configure do |c|
 end
 
 # Contants to be used in Tests
-ConfigFile = '/tmp/rsyslog.conf'
-ConfigDir  = '/tmp/rsyslog.d'
+ConfigFile = '/etc/rsyslog.conf'
+ConfigDir  = '/etc/rsyslog.d'
 
 # Debugging Double Loading
 if $LOADED_FEATURES.grep(/spec\/spec_helper\.rb/).any?
