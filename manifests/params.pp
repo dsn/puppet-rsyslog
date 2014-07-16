@@ -26,23 +26,21 @@ class rsyslog::params {
   $udp_listen_address    = '0.0.0.0'
 
   $separate_hosts        = false
-  $host_logs_dir         = '/var/log/hosts/%HOSTNAME%'
+  $separate_logs_dir     = '/var/log/hosts/%HOSTNAME%'
 
   # Host Based Features
   $enable_immark         = false
   $immark_interva        = 600
-  $always_mark           = false
+  $immark_always         = 'off'
 
-  $forwarding_rules      = { }
-
-  $package_ensure        = present
+  $package_ensure        = latest
   $service_ensure        = running
   $service_enable        = true
 
   # Module Internals
   # DO NOT EDIT UNLESS YOU KNOW WHAT YOU ARE DOING
-  $config_file  = '/etc/rsyslog.conf'
-  $config_dir   = '/etc/rsyslog.d'
+  $config_file  = '/tmp/rsyslog.conf'
+  $include_dir  = '/tmp/rsyslog.d'
 
   $package_name = 'rsyslog'
   $service_name = 'rsyslog'

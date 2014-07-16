@@ -14,25 +14,25 @@ $ModLoad imuxsock
 # provides kernel logging support
 $ModLoad imklog
 
-<% if @enable_mark -%>
+<% if @enable_immark -%>
 # provides --MARK-- message capability
 $ModLoad immark
 
 # always print mark messages
-$ActionWriteAllMarkMessages on
+$ActionWriteAllMarkMessages <%= @immark_always %>
 
 # mark messages appear every 10 Minutes
-$MarkMessagePeriod <%= @mark_interval %>
+$MarkMessagePeriod <%= @immark_interval %>
 <% end -%>
-<% if @listen_udp -%>
+<% if @enable_udp_server -%>
 # Provides UDP syslog reception
 $ModLoad imudp
-$UDPServerRun <%= @listen_upd_port %>
+$UDPServerRun <%= @udp_server_port %>
 <% end -%>
-<% if @listen_tcp -%>
+<% if @enable_tcp_server -%>
 # Provides TCP syslog reception
 $ModLoad imtcp
-$InputTCPServerRun <%= @listen_tcp_port %>
+$InputTCPServerRun <%= @tcp_server_port %>
 <% end -%>
 
 #### GLOBAL DIRECTIVES ####

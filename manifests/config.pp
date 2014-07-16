@@ -4,40 +4,56 @@ class rsyslog::config (
   $udp_server_port   = $rsyslog::params::udp_serve_port,
   $tcp_server_port   = $rsyslog::params::tcp_server_port,
   $separate_hosts    = $rsyslog::params::separate_hosts,
+  $separate_logs_dir = $rsyslog::params::separate_logs_dir,
   $enable_immark     = $rsyslog::params::enable_immark,
   $immark_interval   = $rsyslog::params::immark_interval,
-  $forwarding_rules  = {},
+  $immark_always     = $rsyslog::params::immark_always,
+  $forwarding_rules  = '',
   $config_file       = $rsyslog::params::config_file,
-  $config_dir        = $rsyslog::params::config_dir,
-  $provider          = $rsyslog::params::provider
+  $include_dir       = $rsyslog::params::include_dir
 ) inherits rsyslog::params {
 
-  file { '/tmp/rsyslog.conf':
+  case $separate_hosts {
+    true: {
+      $rules_template = template('rsyslog/rules/separate_hosts.conf.erb')
+    }
+    false: {
+      $rules_template = template('rsyslog/rules/default.conf.erb')
+    }
+    default: {
+      fail("Invalid value for 'separate_hosts' ${separate_hosts}")
+    }
+  }
+
+  validate_absolute_path($config_file)
+  validate_absolute_path($include_dir)
+
+  file { $config_file:
     ensure  => file,
     owner   => root,
     group   => root,
     mode    => '0644',
     content => template('rsyslog/rsyslog.conf.erb'),
-    require => Package[$rsyslog::package_name]
+    require => Class['rsyslog::install']
   }
 
-  file { '/tmp/rsyslog.d/00-local.conf':
+  file { "${include_dir}/rules.conf":
     ensure  => file,
     owner   => root,
     group   => root,
     mode    => '0644',
-    content => template('rsyslog/rules/default.conf.erb'),
-    require => Package[$rsyslog::package_name]
+    content => $rules_template,
+    require => Class['rsyslog::install']
   }
 
-  if $forward_rules {
-    file { '/tmp/rsyslog.d/10-remote.conf':
+  if type($forwarding_rules) == 'hash' {
+    file { "${include_dir}/remote.conf":
       ensure  => file,
       owner   => root,
       group   => root,
       mode    => '0644',
       content => template('rsyslog/rules/remote.conf.erb'),
-      require => Package[$rsyslog::package_name]
+      require => Class['rsyslog::install']
     }
   }
 

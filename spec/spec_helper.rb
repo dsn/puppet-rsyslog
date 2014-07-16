@@ -9,6 +9,10 @@ RSpec.configure do |c|
   c.manifest_dir = File.join(fixture_path, 'manifests')
 end
 
+# Contants to be used in Tests
+ConfigFile = '/tmp/rsyslog.conf'
+ConfigDir  = '/tmp/rsyslog.d'
+
 # Debugging Double Loading
 if $LOADED_FEATURES.grep(/spec\/spec_helper\.rb/).any?
   begin

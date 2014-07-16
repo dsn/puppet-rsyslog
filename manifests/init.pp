@@ -9,9 +9,11 @@ class rsyslog (
   $udp_server_port   = $rsyslog::params::listen_tcp_port,
   $tcp_server_port   = $rsyslog::params::listen_upd_port,
   $separate_hosts    = $rsyslog::params::separate_hosts,
+  $separate_logs_dir = $rsyslog::params::separate_logs_dir,
   $enable_immark     = $rsyslog::params::enable_mark_messages,
   $immark_interval   = $rsyslog::params::mark_interval,
-  $forwarding_rules  = $rsyslog::params::forwarding_rules,
+  $immark_always     = $rsyslog::params::immark_always,
+  $forwarding_rules  = '',
   $package_name      = $rsyslog::params::package_name,
   $package_ensure    = $rsyslog::params::package_ensure,
   $service_name      = $rsyslog::params::service_name,
@@ -30,8 +32,10 @@ class rsyslog (
     udp_server_port   => $udp_server_port,
     tcp_server_port   => $tcp_server_port,
     separate_hosts    => $separate_hosts,
+    separate_logs_dir => $separate_logs_dir,
     enable_immark     => $enable_immark,
     immark_interval   => $immark_interval,
+    immark_always     => $immark_always,
     forwarding_rules  => $forwarding_rules
   }
 
